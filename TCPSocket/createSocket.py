@@ -11,12 +11,7 @@ parser.add_argument('-i', '--ip_address', required=True, dest='ip_address', help
 
 args = parser.parse_args()
 
-print(args)
-
 _socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
-print(type(args.port))
-
 
 if args.client:
 	_socket.connect((args.ip_address, args.port))
@@ -38,5 +33,6 @@ else:
 		connection.send(message)
 		reply = connection.recv(1024).decode('utf-8')
 		print(reply)
+		break
 
 _socket.close()
