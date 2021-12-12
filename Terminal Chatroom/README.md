@@ -38,9 +38,13 @@ Client 3:
 
 **Output**
 Server:
+![Server Output](/.images/(Output) server_socket.PNG)
 
 Client 1:
+![Client 1 Output](/.images/Client 1.PNG)
 
 Client 2:
+![Todd Output](/.images/Todd.PNG)
 
 Client 3:
+![Jared Output](/.images/Jared.PNG)
