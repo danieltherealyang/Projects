@@ -78,7 +78,7 @@ if __name__ == "__main__":
         if not input_thread.is_alive():
             while not que.empty():
                 _input = que.get()
-                send_message(client_socket, client_address, _input)
+            
             if _input.lower() == "quit":
                 try:
                     response = client_socket.recv(2048)
@@ -87,6 +87,7 @@ if __name__ == "__main__":
                     break
                 break
             
+            send_message(client_socket, client_address, _input)
             input_thread = threading.Thread(target=lambda q, m: q.put(get_message(m)), args=(que, prompt))
             input_thread.start()
         
@@ -95,7 +96,7 @@ if __name__ == "__main__":
             response = client_socket.recv(2048)
             if not response:
                 break
-            print("\r" + response.decode('utf-8') + "\n" + prompt, end="")
+            print("\r" + response.decode('utf-8') + '\033[K' + "\n" + prompt , end="")
         except:
             continue
     
