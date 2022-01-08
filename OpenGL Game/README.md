@@ -22,6 +22,4 @@ The main purpose of creating the program was to learn about the OpenGL API and c
 - vbo.h - manages vertex buffer object GL calls
 - window.h - creates the window for the program to render to, contains the main render loop
 ## Libraries
-For loading an OpenGL context, the **GLAD** library was used since it seems the most widely used and well documented. **GLEW** is another alternative but I found less documentation and had some trouble setting it up.
-For window creation, **GLFW** was used since it is the most popular choice and its interface seemed simpler compared to **GLUT**.
-For vertex and matrix calculations, **GLM** was used because it was purpose built for OpenGL compatibility.
+For loading an OpenGL context, the **GLAD** library was used since it seems the most widely used and well documented. **GLEW** is another alternative but I found less documentation and had some trouble setting it up. For window creation, **GLFW** was used since it is the most popular choice and its interface seemed simpler compared to **GLUT**. For vertex and matrix calculations, **GLM** was used because it was purpose built for OpenGL compatibility.
