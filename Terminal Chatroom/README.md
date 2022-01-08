@@ -1,4 +1,10 @@
 # Terminal Chatroom Program
+## About
+This program is written in python and uses the python socket module to create TCP connections between instances.
+The program is intended to be run from the command line with a server instantiated to mediate connections between clients.
+The purpose in creating this program was to refresh my python skills as well as to learn about the socket module in case I need to use it for a CTF competition.
+Learning about multithreading in python was unintended but necessary to implement the server functionality.
+
 ### Server
 **serverSocket.py**: Creates a process to act as a server for the chatroom
 
