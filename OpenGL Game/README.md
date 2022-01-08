@@ -10,7 +10,7 @@ The main purpose of creating the program was to learn about the OpenGL API and c
 - headers - contains header files for OpenGL and other external libraries
 - output - contains all .obj files and executable after compilation
 - resources - contains game resources such as shaders and textures \
-**Files**
+**Files** \
 - assets.h - manages the loading of all vertices, buffer objects, and textures
 - camera.h - calculates all of the vectors and matrices for mapping the world onto a 2D plane, stores the view and projection matrices
 - ebo.h - manages element buffer object GL calls
