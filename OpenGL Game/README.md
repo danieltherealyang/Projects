@@ -1,6 +1,6 @@
 # OpenGL Game
 ## About
-![Cube Demo](./.images/Cube.PNG)
+![Cube Demo](./.images/Cube.PNG) \
 This program is written in C++ and uses the OpenGL API to render a cube and has basic movement and mouse functionality to control the camera.
 Rather than a game itself, the program is more of a basic skeleton or boilerplate code to begin creating an actual game.
 The main purpose of creating the program was to learn about the OpenGL API and come up with a way to structure the API calls with functionality grouped by containerized classes.
