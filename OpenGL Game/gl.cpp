@@ -1,5 +1,5 @@
 #include "gl.h"
-const char* TITLE = "Minecraft";
+const char* TITLE = "OpenGL Game";
 int SCR_WIDTH = 800;
 int SCR_HEIGHT = 600;
 float SPEED = 0.1f;
