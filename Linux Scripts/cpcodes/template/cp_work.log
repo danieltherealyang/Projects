@@ -1,0 +1,53 @@
+Sun Feb 11 16:52:24 UTC 2018  : Comparison START
+------------------------------
+diff /usr/share/lightdm/lightdm.conf.d/50-unity-greeter.conf cp_backup/usr/share/lightdm/lightdm.conf.d/50-unity-greeter.conf
+diff /etc/sudoers cp_backup/etc/sudoers
+diff /etc/inittab cp_backup/etc/inittab
+diff /etc/ssh/sshd_config cp_backup/etc/ssh/sshd_config
+diff /etc/issue cp_backup/etc/issue
+diff /etc/apache2/conf-available/security.conf cp_backup/etc/apache2/conf-available/security.conf
+diff /etc/apache2/mods-available/ssl.conf cp_backup/etc/apache2/mods-available/ssl.conf
+diff /etc/resolvconf/resolv.conf.d/base cp_backup/etc/resolvconf/resolv.conf.d/base
+diff /etc/modprobe.d/blacklist.conf cp_backup/etc/modprobe.d/blacklist.conf
+diff /etc/modprobe.d/bluetooth.conf cp_backup/etc/modprobe.d/bluetooth.conf
+diff /etc/modprobe.d/usb-storage.conf cp_backup/etc/modprobe.d/usb-storage.conf
+diff /etc/init.d/rc cp_backup/etc/init.d/rc
+diff /etc/pam.d/login cp_backup/etc/pam.d/login
+diff /etc/pam.d/common-account cp_backup/etc/pam.d/common-account
+diff /etc/pam.d/common-auth cp_backup/etc/pam.d/common-auth
+diff /etc/pam.d/common-password cp_backup/etc/pam.d/common-password
+diff /etc/pam.d/su cp_backup/etc/pam.d/su
+diff /etc/pam.d/common-session cp_backup/etc/pam.d/common-session
+diff /etc/pam.d/sshd cp_backup/etc/pam.d/sshd
+diff /etc/sysctl.conf cp_backup/etc/sysctl.conf
+diff /etc/lightdm/lightdm.conf cp_backup/etc/lightdm/lightdm.conf
+diff /etc/lightdm/users.conf cp_backup/etc/lightdm/users.conf
+diff /etc/login.defs cp_backup/etc/login.defs
+diff /etc/host.conf cp_backup/etc/host.conf
+diff /etc/bluetooth/main.conf cp_backup/etc/bluetooth/main.conf
+diff /etc/hosts.allow cp_backup/etc/hosts.allow
+diff /etc/security/access.conf cp_backup/etc/security/access.conf
+diff /etc/security/limits.conf cp_backup/etc/security/limits.conf
+diff /etc/security/pwquality.conf cp_backup/etc/security/pwquality.conf
+diff /etc/profile cp_backup/etc/profile
+diff /etc/hosts.deny cp_backup/etc/hosts.deny
+diff /etc/init/control-alt-delete.override cp_backup/etc/init/control-alt-delete.override
+diff /etc/init/control-alt-delete.conf cp_backup/etc/init/control-alt-delete.conf
+diff /etc/motd cp_backup/etc/motd
+diff /etc/default/irqbalance cp_backup/etc/default/irqbalance
+diff /etc/default/useradd cp_backup/etc/default/useradd
+diff /etc/samba/smb.conf cp_backup/etc/samba/smb.conf
+diff /etc/issue.net cp_backup/etc/issue.net
+diff /etc/securetty cp_backup/etc/securetty
+diff /root/.profile cp_backup/root/.profile
+------------------------------
+    40 modified. See cp_work.log for detailed
+------------------------------
+Sun Feb 11 16:52:26 UTC 2018  : Comparison END
+Sun Feb 11 16:58:32 UTC 2018  : Comparison START
+------------------------------
+diff /etc/mysql/mysql.conf.d/mysqld.cnf cp_backup/etc/mysql/mysql.conf.d/mysqld.cnf
+------------------------------
+    1 modified. See cp_work.log for detailed
+------------------------------
+Sun Feb 11 16:58:32 UTC 2018  : Comparison END

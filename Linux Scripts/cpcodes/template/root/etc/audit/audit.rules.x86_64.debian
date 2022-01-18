@@ -1,0 +1,91 @@
+# This file contains the auditctl rules that are loaded
+# whenever the audit daemon is started via the initscripts.
+# The rules are simply the parameters that would be passed
+# to auditctl.
+
+# first of all, reset the rules (delete all)
+-D
+# increase the buffers to survive stress events. make this bigger for busy systems.
+-b 1024
+# monitor unlink() and rmdir() system calls.
+-a exit,always -F arch=b64 -S unlink -S rmdir
+# monitor open() system call by Linux UID 1001.
+-a exit,always -S open -F loginuid=1001
+# monitor write-access and change in file properties (read/write/execute) of the following files.
+-w /etc/group -p wa
+-w /etc/passwd -p wa
+-w /etc/shadow -p wa
+-w /etc/sudoers -p wa
+# monitor read-access of the following directory.
+-w /etc/secret_directory -p r
+# configure the system to audit execution of module management programs
+-w /sbin/insmod -p x -k modules
+-w /sbin/rmmod -p x -k modules
+-w /sbin/modprobe -p x -k modules
+-a always,exit -F arch=b64 -S init_module -S delete_module -k modules
+# audit changing of file ownership (chown, fchown, fchownat)
+-a always,exit -F arch=b64 -S chown -F auid>=500 -F auid!=4294967295 -k perm_mod 
+-a always,exit -F arch=b64 -S chown -F auid=0 -k perm_mod 
+# audit calls to 'fchown' (file ownership)
+-a always,exit -F arch=b64 -S fchown -F auid>=500 -F auid!=4294967295 -k perm_mod 
+-a always,exit -F arch=b64 -S fchown -F auid=0 -k perm_mod 
+# audit calls to 'fchownat' (file ownership)
+-a always,exit -F arch=b64 -S fchownat -F auid>=500 -F auid!=4294967295 -k perm_mod 
+-a always,exit -F arch=b64 -S fchownat -F auid=0 -k perm_mod
+# audit calls to 'lchown' (file ownership)
+-a always,exit -F arch=b64 -S lchown -F auid>=500 -F auid!=4294967295 -k perm_mod 
+-a always,exit -F arch=b64 -S lchown -F auid=0 -k perm_mod
+# audit changing of file permissions (chmod, fchmod, fchmodat)
+-a always,exit -F arch=b64 -S chmod -F auid>=500 -F auid!=4294967295 -k perm_mod 
+-a always,exit -F arch=b64 -S chmod -F auid=0 -k perm_mod
+# audit calls to 'fchmod' (file permissions)
+-a always,exit -F arch=b64 -S fchmod -F auid>=500 -F auid!=4294967295 -k perm_mod 
+-a always,exit -F arch=b64 -S fchmod -F auid=0 -k perm_mod
+# audit calls to 'fchmodat' (file permissions)
+-a always,exit -F arch=b64 -S fchmodat -F auid>=500 -F auid!=4294967295 -k perm_mod 
+-a always,exit -F arch=b64 -S fchmodat -F auid=0 -k perm_mod
+# audit DAC modifications (file permissions) via fremovexattr
+-a always,exit -F arch=b64 -S fremovexattr -F auid>=500 -F auid!=4294967295 -k perm_mod 
+-a always,exit -F arch=b64 -S fremovexattr -F auid=0 -k perm_mod
+# audit DAC modifications (file permissions) via fsetxattr
+-a always,exit -F arch=b64 -S fsetxattr -F auid>=500 -F auid!=4294967295 -k perm_mod 
+-a always,exit -F arch=b64 -S fsetxattr -F auid=0 -k perm_mod
+# audit DAC modifications (file permissions) via lremovexattr
+-a always,exit -F arch=b64 -S lremovexattr -F auid>=500 -F auid!=4294967295 -k perm_mod 
+-a always,exit -F arch=b64 -S lremovexattr -F auid=0 -k perm_mod
+# audit DAC modifications (file permissions) via lsetxattr
+-a always,exit -F arch=b64 -S lsetxattr -F auid>=500 -F auid!=4294967295 -k perm_mod 
+-a always,exit -F arch=b64 -S lsetxattr -F auid=0 -k perm_mod
+# audit DAC modifications (file permissions) via removexattr
+-a always,exit -F arch=b64 -S removexattr -F auid>=500 -F auid!=4294967295 -k perm_mod 
+-a always,exit -F arch=b64 -S removexattr -F auid=0 -k perm_mod
+# audit DAC modifications (file permissions) via setxattr
+-a always,exit -F arch=b64 -S setxattr -F auid>=500 -F auid!=4294967295 -k perm_mod 
+-a always,exit -F arch=b64 -S setxattr -F auid=0 -k perm_mod
+# audit unsuccessful attempts to access files
+-a always,exit -F arch=b64 -S creat -S open -S openat -S truncate -S ftruncate -F exit=-EACCES -F auid>=500 -F auid!=4294967295 -k access 
+-a always,exit -F arch=b64 -S creat -S open -S openat -S truncate -S ftruncate -F exit=-EPERM -F auid>=500 -F auid!=4294967295 -k access 
+-a always,exit -F arch=b64 -S creat -S open -S openat -S truncate -S ftruncate -F exit=-EACCES -F auid=0 -k access 
+-a always,exit -F arch=b64 -S creat -S open -S openat -S truncate -S ftruncate -F exit=-EPERM -F auid=0 -k access
+# audit_account_changes 
+-w /etc/group -p wa -k audit_account_changes 
+-w /etc/passwd -p wa -k audit_account_changes 
+-w /etc/gshadow -p wa -k audit_account_changes 
+-w /etc/shadow -p wa -k audit_account_changes 
+-w /etc/security/opasswd -p wa -k audit_account_changes
+# audit_network_modifications 
+-a always,exit -F arch=b64 -S sethostname -S setdomainname -k audit_network_modifications 
+-w /etc/issue -p wa -k audit_network_modifications 
+-w /etc/issue.net -p wa -k audit_network_modifications 
+-w /etc/hosts -p wa -k audit_network_modifications 
+# audit successful file system mounts
+-a always,exit -F arch=b64 -S mount -F auid>=500 -F auid!=4294967295 -k export
+-a always,exit -F arch=b64 -S mount -F auid=0 -k export
+# audit user deletions of files and programs
+-a always,exit -F arch=b64 -S rmdir -S unlink -S unlinkat -S rename -S renameat -F auid>=500 -F auid!=4294967295 -k delete
+-a always,exit -F arch=b64 -S rmdir -S unlink -S unlinkat -S rename -S renameat -F auid=0 -k delete
+-a always,exit -F arch=b64 -F path=/usr/sbin/pam_timestamp_check -F perm=x -F auid>=1000 -F auid!=4294967295 -k privileged-pam
+# audit changes to the /etc/sudoers file
+-w /etc/sudoers -p wa -k actions
+# lock the audit configuration to prevent any modification of this file.
+-e 2
