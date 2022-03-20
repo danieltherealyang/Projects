@@ -1,7 +1,7 @@
 #ifndef GLOBAL_H
 #define GLOBAL_H
 
-const float ALPHA = 0.0; //x,y,z angle rotation increments
+const float ALPHA = 0.2; //x,y,z angle rotation increments
 const float BETA = 0.1;
 const float GAMMA = 0.0;
 const float PHI_INC = 0.1; //torus parameterization increments

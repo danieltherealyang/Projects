@@ -1,1 +1,0 @@
-exec /usr/bin/logger -p security.info
