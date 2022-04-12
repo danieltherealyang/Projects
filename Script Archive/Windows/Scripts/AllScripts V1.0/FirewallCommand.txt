@@ -1,0 +1,14 @@
+Block and enable Inbound on all profiles:
+Get-NetFirewallRule -Direction Inbound | Set-NetFirewallRule -Action Block -Enabled true -Profile Any 
+
+Block and enable Inbound and Outbound on all profiles:
+Get-NetFirewallRule | Set-NetFirewallRule -Action Block -Enabled true -Profile Any
+
+Allow and enable Inbound on all profiles:
+Get-NetFirewallRule -Direction Inbound | Set-NetFirewallRule -Action Allow -Enabled true -Profile Any
+
+Allow and enable Inbound and Outbound on all profiles:
+Get-NetFirewallRule | Set-NetFirewallRule -Action Allow -Enabled true -Profile Any
+
+Enable all rules on all profiles:
+Get-NetFirewallRule | Set-NetFirewallRule -Enabled true

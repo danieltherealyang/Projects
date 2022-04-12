@@ -1,0 +1,3 @@
+%systemroot%\system32\grouppolicy 
+
+Gpupdate /force
