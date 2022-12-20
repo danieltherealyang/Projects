@@ -15,7 +15,7 @@ int main() {
     Shape torus(&renderer);
     
     while (true) {
-        chrono::time_point t_p = chrono::steady_clock::now() + ns_per_frame;
+        chrono::time_point<chrono::system_clock> t_p = chrono::system_clock::now() + chrono::nanoseconds(ns_per_frame);
 
         renderer.render();
         torus.increment();

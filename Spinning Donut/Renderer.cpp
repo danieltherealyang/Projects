@@ -64,7 +64,7 @@ void Renderer::mapPoint(float x, float y, float z, float brightness) {
     string key = keyStream.str();
 
     if (m_zBuffer.find(key) == m_zBuffer.end() || m_zBuffer.at(key).first > z) {
-        m_zBuffer.insert_or_assign(key, pair<float,float>(z, brightness));
+        m_zBuffer[key] = pair<float,float>(z, brightness);
     }
 }
 
