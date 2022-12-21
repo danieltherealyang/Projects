@@ -4,16 +4,16 @@
 #include <sstream>
 #include <string>
 #include <cmath>
+#include <ncurses.h>
 
 using namespace std;
 
 Renderer::Renderer() {
-    m_resolution = RESOLUTION - (RESOLUTION % 10);
+    m_resolution = RESOLUTION;
 }
 
 void Renderer::render() {
     m_frame.clear();
-    clear();
     float increment = (m_maxBrightness - m_minBrightness)/m_charsetSize;
     int rowSize = (int) (m_resolution * (X_RIGHT - X_LEFT));
     for (float i = Y_TOP; i > Y_BOTTOM; i -= 1.0f/m_resolution) {
@@ -43,13 +43,16 @@ void Renderer::render() {
         }
         m_frame.push_back(row);
     }
-    
+    string frame = "";
     for (int i = 0; i < m_frame.size(); i++) {
         for (int j = 0; j < rowSize; j++) {
-            cout << m_frame[i][j];
+            frame += m_frame[i][j];
         }
-        cout << '\n';
+        frame += '\n';
     }
+    clear();
+    printw(frame.c_str());
+    refresh();
     m_zBuffer.clear();
 }
 
@@ -66,8 +69,4 @@ void Renderer::mapPoint(float x, float y, float z, float brightness) {
     if (m_zBuffer.find(key) == m_zBuffer.end() || m_zBuffer.at(key).first > z) {
         m_zBuffer[key] = pair<float,float>(z, brightness);
     }
-}
-
-void Renderer::clear() {
-    cout << '\033' << "[2J" << '\033' << "[1;1H";
 }

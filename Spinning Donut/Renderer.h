@@ -11,7 +11,6 @@ class Renderer {
         void render();
         void mapPoint(float x, float y, float z, float brightness);
     private:
-        void clear();
         std::unordered_map<std::string, std::pair<float,float>> m_zBuffer;
         int m_resolution;
         int m_charsetSize = 12;

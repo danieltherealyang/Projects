@@ -83,6 +83,10 @@ void processInput(GLFWwindow* window, Renderer* renderer) {
         renderer->camera->move(SPEED, 'B');
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
         renderer->camera->move(SPEED, 'R');
+    if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
+        renderer->camera->move(SPEED, 'U');
+    if (glfwGetKey(window, GLFW_KEY_X) == GLFW_PRESS)
+        renderer->camera->move(SPEED, 'D');
 }
 
 void mouse_button_callback(GLFWwindow* window, int button, int action, int mods) {

@@ -6,10 +6,12 @@
 #include "Shape.h"
 #include "Renderer.h"
 #include <string>
+#include <ncurses.h>
 
 using namespace std;
 
 int main() {
+    initscr();
     chrono::nanoseconds ns_per_frame(1000000000/FPS);
     Renderer renderer;
     Shape torus(&renderer);
@@ -22,4 +24,5 @@ int main() {
 
         this_thread::sleep_until(t_p);
     }
+    endwin();
 }

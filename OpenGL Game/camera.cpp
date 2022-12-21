@@ -53,5 +53,12 @@ void Camera::move(float speed, char direction) {
             break;
         case 'L':
             m_pos -= speed * glm::normalize(glm::cross(m_front, m_up));
+            break;
+        case 'U':
+            m_pos += speed * m_up;
+            break;
+        case 'D':
+            m_pos -= speed * m_up;
+            break;
     } 
 }
